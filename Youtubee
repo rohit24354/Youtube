@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Launching YouTube...</title>
+    <script>
+        window.onload = function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check if iOS
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "brave://open-url?url=https://m.youtube.com";
+            } 
+            // Check if Android
+            else if (/android/i.test(userAgent)) {
+                window.location.href = "intent://m.youtube.com/#Intent;scheme=https;package=com.brave.browser;end;";
+            } 
+            // Fallback for desktop or other OS
+            else {
+                window.location.href = "https://m.youtube.com";
+            }
+        };
+    </script>
+</head>
+<body style="background-color: black; color: white; text-align: center; font-family: sans-serif; padding-top: 50px;">
+    <h2>Opening in Brave...</h2>
+</body>
+</html>
